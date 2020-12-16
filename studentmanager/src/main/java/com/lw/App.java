@@ -1,10 +1,26 @@
 package com.lw;
 
+import lombok.extern.slf4j.Slf4j;
+import org.mybatis.spring.annotation.MapperScan;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
 /**
  * @author yujun.wu
  * @version 1.0
  * @create date 2020/12/16 21:07
  * @Description:类的具体作用描述
  */
+@SpringBootApplication
+@MapperScan("com.lw")
+@Slf4j
 public class App {
+    public static void main(String[] args) {
+        try{
+            SpringApplication.run(App.class,args);
+            log.info("App start server");
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
 }
