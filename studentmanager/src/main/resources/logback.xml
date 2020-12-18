@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
+    <!--落盘日志记录-->
     <appender name="FILE" class="ch.qos.logback.core.FileAppender">
         <file>E:\\log\\studentManager.log</file>
         <encoder>
@@ -8,7 +9,7 @@
             </pattern>
         </encoder>
     </appender>
-
+    <!--控制台日志-->
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
             <pattern>

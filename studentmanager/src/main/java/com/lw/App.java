@@ -10,7 +10,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
  * @author yujun.wu
  * @version 1.0
  * @create date 2020/12/16 21:07
- * @Description:类的具体作用描述
+ * @Description: 学生信息管理系统启动入口
  */
 @SpringBootApplication
 @MapperScan("com.lw")
