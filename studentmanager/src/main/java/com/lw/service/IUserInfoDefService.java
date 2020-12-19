@@ -30,7 +30,7 @@ public interface IUserInfoDefService extends IService<UserInfoDef> {
      * @param id
      * @return
      */
-     UserInfoDef info(Long id);
+    UserInfoDef info(Long id);
 
     /**
      * 用户信息定义表新增
@@ -38,7 +38,7 @@ public interface IUserInfoDefService extends IService<UserInfoDef> {
      * @param param 根据需要进行传值
      * @return
      */
-     void add(UserInfoDef param);
+    void add(UserInfoDef param);
 
     /**
      * 用户信息定义表修改
@@ -46,7 +46,7 @@ public interface IUserInfoDefService extends IService<UserInfoDef> {
      * @param param 根据需要进行传值
      * @return
      */
-     void modify(UserInfoDef param);
+    void modify(UserInfoDef param);
 
     /**
      * 用户信息定义表删除(单个条目)
@@ -54,7 +54,7 @@ public interface IUserInfoDefService extends IService<UserInfoDef> {
      * @param id
      * @return
      */
-     void remove(Long id);
+    void remove(Long id);
 
     /**
      * 删除(多个条目)
@@ -62,5 +62,5 @@ public interface IUserInfoDefService extends IService<UserInfoDef> {
      * @param ids
      * @return
      */
-     void removes(List<Long> ids);
+    void removes(List<Long> ids);
 }

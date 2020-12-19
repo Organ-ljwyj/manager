@@ -30,7 +30,7 @@ public interface IStudentInfoTService extends IService<StudentInfoT> {
      * @param id
      * @return
      */
-     StudentInfoT info(Long id);
+    StudentInfoT info(Long id);
 
     /**
      * 学生个人信息新增
@@ -38,7 +38,7 @@ public interface IStudentInfoTService extends IService<StudentInfoT> {
      * @param param 根据需要进行传值
      * @return
      */
-     void add(StudentInfoT param);
+    void add(StudentInfoT param);
 
     /**
      * 学生个人信息修改
@@ -46,7 +46,7 @@ public interface IStudentInfoTService extends IService<StudentInfoT> {
      * @param param 根据需要进行传值
      * @return
      */
-     void modify(StudentInfoT param);
+    void modify(StudentInfoT param);
 
     /**
      * 学生个人信息删除(单个条目)
@@ -54,7 +54,7 @@ public interface IStudentInfoTService extends IService<StudentInfoT> {
      * @param id
      * @return
      */
-     void remove(Long id);
+    void remove(Long id);
 
     /**
      * 删除(多个条目)
@@ -62,5 +62,5 @@ public interface IStudentInfoTService extends IService<StudentInfoT> {
      * @param ids
      * @return
      */
-     void removes(List<Long> ids);
+    void removes(List<Long> ids);
 }

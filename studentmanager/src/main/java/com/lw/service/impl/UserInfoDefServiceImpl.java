@@ -37,31 +37,31 @@ public class UserInfoDefServiceImpl extends ServiceImpl<UserInfoDefMapper, UserI
     public IPage<UserInfoDef> page(UserInfoDef param) {
         QueryWrapper<UserInfoDef> queryWrapper = new QueryWrapper<>();
         queryWrapper.lambda()
-            //自增主键ID
+                //自增主键ID
                 .eq(param.getId() != null, UserInfoDef::getId, param.getId())
-                    //学生姓名
+                //学生姓名
                 .eq(!StringUtils.isEmpty(param.getName()), UserInfoDef::getName, param.getName())
-                    //学生性别
+                //学生性别
                 .eq(param.getSex() != null, UserInfoDef::getSex, param.getSex())
-                    //身份证号
+                //身份证号
                 .eq(!StringUtils.isEmpty(param.getIdCard()), UserInfoDef::getIdCard, param.getIdCard())
-                    //手机号
+                //手机号
                 .eq(!StringUtils.isEmpty(param.getPhone()), UserInfoDef::getPhone, param.getPhone())
-                    //邮箱
+                //邮箱
                 .eq(!StringUtils.isEmpty(param.getEmail()), UserInfoDef::getEmail, param.getEmail())
-                    //年龄
+                //年龄
                 .eq(param.getAge() != null, UserInfoDef::getAge, param.getAge())
-                    //出生日期
+                //出生日期
                 .eq(param.getBirthday() != null, UserInfoDef::getBirthday, param.getBirthday())
-                    //添加人
+                //添加人
                 .eq(param.getAddOperator() != null, UserInfoDef::getAddOperator, param.getAddOperator())
-                    //添加时间
+                //添加时间
                 .eq(param.getAddDttm() != null, UserInfoDef::getAddDttm, param.getAddDttm())
-                    //修改人
+                //修改人
                 .eq(param.getUpdateOperator() != null, UserInfoDef::getUpdateOperator, param.getUpdateOperator())
-                    //修改时间
+                //修改时间
                 .eq(param.getUpdateDttm() != null, UserInfoDef::getUpdateDttm, param.getUpdateDttm())
-                    //删除标志
+                //删除标志
                 .eq(param.getDeleted() != null, UserInfoDef::getDeleted, param.getDeleted())
         ;
         IPage<UserInfoDef> page = page(pageUtils.page(), queryWrapper);

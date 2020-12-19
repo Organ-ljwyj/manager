@@ -37,21 +37,21 @@ public class UserRoleDefTServiceImpl extends ServiceImpl<UserRoleDefTMapper, Use
     public IPage<UserRoleDefT> page(UserRoleDefT param) {
         QueryWrapper<UserRoleDefT> queryWrapper = new QueryWrapper<>();
         queryWrapper.lambda()
-            //主键ID
+                //主键ID
                 .eq(param.getId() != null, UserRoleDefT::getId, param.getId())
-                    //角色
+                //角色
                 .eq(!StringUtils.isEmpty(param.getRole()), UserRoleDefT::getRole, param.getRole())
-                    //角色描述
+                //角色描述
                 .eq(!StringUtils.isEmpty(param.getRoleDesc()), UserRoleDefT::getRoleDesc, param.getRoleDesc())
-                    //添加人
+                //添加人
                 .eq(param.getAddOperator() != null, UserRoleDefT::getAddOperator, param.getAddOperator())
-                    //添加时间
+                //添加时间
                 .eq(param.getAddDttm() != null, UserRoleDefT::getAddDttm, param.getAddDttm())
-                    //修改人
+                //修改人
                 .eq(param.getUpdateOperator() != null, UserRoleDefT::getUpdateOperator, param.getUpdateOperator())
-                    //修改时间
+                //修改时间
                 .eq(param.getUpdateDttm() != null, UserRoleDefT::getUpdateDttm, param.getUpdateDttm())
-                    //删除标志
+                //删除标志
                 .eq(param.getDeleted() != null, UserRoleDefT::getDeleted, param.getDeleted())
         ;
         IPage<UserRoleDefT> page = page(pageUtils.page(), queryWrapper);

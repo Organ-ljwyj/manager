@@ -8,6 +8,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.lw.utils.PageUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
@@ -22,6 +23,7 @@ import java.util.List;
  * @since 2020-12-19
  */
 @Service
+@Primary
 public class StudentInfoTServiceImpl extends ServiceImpl<StudentInfoTMapper, StudentInfoT> implements IStudentInfoTService {
 
     @Autowired
@@ -37,25 +39,25 @@ public class StudentInfoTServiceImpl extends ServiceImpl<StudentInfoTMapper, Stu
     public IPage<StudentInfoT> page(StudentInfoT param) {
         QueryWrapper<StudentInfoT> queryWrapper = new QueryWrapper<>();
         queryWrapper.lambda()
-            //自增主键ID
+                //自增主键ID
                 .eq(param.getId() != null, StudentInfoT::getId, param.getId())
-                    //用户ID
+                //用户ID
                 .eq(param.getUserId() != null, StudentInfoT::getUserId, param.getUserId())
-                    //学生学号
+                //学生学号
                 .eq(!StringUtils.isEmpty(param.getStuNum()), StudentInfoT::getStuNum, param.getStuNum())
-                    //入学日期
+                //入学日期
                 .eq(param.getEnrolDttm() != null, StudentInfoT::getEnrolDttm, param.getEnrolDttm())
-                    //毕业时间
+                //毕业时间
                 .eq(param.getGraduateDttm() != null, StudentInfoT::getGraduateDttm, param.getGraduateDttm())
-                    //添加人
+                //添加人
                 .eq(param.getAddOperator() != null, StudentInfoT::getAddOperator, param.getAddOperator())
-                    //添加时间
+                //添加时间
                 .eq(param.getAddDttm() != null, StudentInfoT::getAddDttm, param.getAddDttm())
-                    //修改人
+                //修改人
                 .eq(param.getUpdateOperator() != null, StudentInfoT::getUpdateOperator, param.getUpdateOperator())
-                    //修改时间
+                //修改时间
                 .eq(param.getUpdateDttm() != null, StudentInfoT::getUpdateDttm, param.getUpdateDttm())
-                    //删除标志
+                //删除标志
                 .eq(param.getDeleted() != null, StudentInfoT::getDeleted, param.getDeleted())
         ;
         IPage<StudentInfoT> page = page(pageUtils.page(), queryWrapper);

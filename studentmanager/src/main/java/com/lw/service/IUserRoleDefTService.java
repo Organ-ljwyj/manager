@@ -30,7 +30,7 @@ public interface IUserRoleDefTService extends IService<UserRoleDefT> {
      * @param id
      * @return
      */
-     UserRoleDefT info(Long id);
+    UserRoleDefT info(Long id);
 
     /**
      * 用户角色定义表新增
@@ -38,7 +38,7 @@ public interface IUserRoleDefTService extends IService<UserRoleDefT> {
      * @param param 根据需要进行传值
      * @return
      */
-     void add(UserRoleDefT param);
+    void add(UserRoleDefT param);
 
     /**
      * 用户角色定义表修改
@@ -46,7 +46,7 @@ public interface IUserRoleDefTService extends IService<UserRoleDefT> {
      * @param param 根据需要进行传值
      * @return
      */
-     void modify(UserRoleDefT param);
+    void modify(UserRoleDefT param);
 
     /**
      * 用户角色定义表删除(单个条目)
@@ -54,7 +54,7 @@ public interface IUserRoleDefTService extends IService<UserRoleDefT> {
      * @param id
      * @return
      */
-     void remove(Long id);
+    void remove(Long id);
 
     /**
      * 删除(多个条目)
@@ -62,5 +62,5 @@ public interface IUserRoleDefTService extends IService<UserRoleDefT> {
      * @param ids
      * @return
      */
-     void removes(List<Long> ids);
+    void removes(List<Long> ids);
 }

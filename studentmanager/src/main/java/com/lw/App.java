@@ -13,7 +13,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
  * @Description: 学生信息管理系统启动入口
  */
 @SpringBootApplication
-@MapperScan("com.lw")
+@MapperScan("com.lw.mapper")
 @Slf4j
 public class App {
     public static void main(String[] args) {
