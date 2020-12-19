@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lw.mapper.StudentInfoTMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.lw.bean.StudentInfoT">
+        <id column="T_ID" property="id" />
+        <result column="T_USER_ID" property="userId" />
+        <result column="T_STU_NUM" property="stuNum" />
+        <result column="T_ENROL_DTTM" property="enrolDttm" />
+        <result column="T_GRADUATE_DTTM" property="graduateDttm" />
+        <result column="T_ADD_OPERATOR" property="addOperator" />
+        <result column="T_ADD_DTTM" property="addDttm" />
+        <result column="T_UPDATE_OPERATOR" property="updateOperator" />
+        <result column="T_UPDATE_DTTM" property="updateDttm" />
+        <result column="T_DELETED" property="deleted" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        T_ID, T_USER_ID, T_STU_NUM, T_ENROL_DTTM, T_GRADUATE_DTTM, T_ADD_OPERATOR, T_ADD_DTTM, T_UPDATE_OPERATOR, T_UPDATE_DTTM, T_DELETED
+    </sql>
+
+</mapper>

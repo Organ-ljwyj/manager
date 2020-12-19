@@ -23,6 +23,7 @@
         <lombok-version>1.16.20</lombok-version>
         <swagger-version>2.9.2</swagger-version>
         <alibaba-json-version>1.2.73</alibaba-json-version>
+        <validation-version>2.0.1.Final</validation-version>
     </properties>
 
     <dependencies>
@@ -35,7 +36,11 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-
+        <!--freemarker-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-freemarker</artifactId>
+        </dependency>
         <!-- jdbcTemplate 依赖 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -60,6 +65,12 @@
         <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-boot-starter</artifactId>
+            <version>${mybatis-plus-version}</version>
+        </dependency>
+        <!--mybatis-plus 代码生成依赖包-->
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-generator</artifactId>
             <version>${mybatis-plus-version}</version>
         </dependency>
 
@@ -105,6 +116,13 @@
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
             <version>${alibaba-json-version}</version>
+        </dependency>
+
+        <!--字段校验注解-->
+        <dependency>
+            <groupId>javax.validation</groupId>
+            <artifactId>validation-api</artifactId>
+            <version>${validation-version}</version>
         </dependency>
     </dependencies>
 

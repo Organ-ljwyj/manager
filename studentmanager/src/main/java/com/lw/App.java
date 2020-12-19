@@ -14,7 +14,6 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
  */
 @SpringBootApplication
 @MapperScan("com.lw")
-@EnableSwagger2
 @Slf4j
 public class App {
     public static void main(String[] args) {
