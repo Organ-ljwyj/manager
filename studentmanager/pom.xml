@@ -24,6 +24,7 @@
         <swagger-version>2.9.2</swagger-version>
         <alibaba-json-version>1.2.73</alibaba-json-version>
         <validation-version>2.0.1.Final</validation-version>
+        <hibernate-validator-version>6.0.13.Final</hibernate-validator-version>
     </properties>
 
     <dependencies>
@@ -120,9 +121,8 @@
 
         <!--字段校验注解-->
         <dependency>
-            <groupId>javax.validation</groupId>
-            <artifactId>validation-api</artifactId>
-            <version>${validation-version}</version>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-validation</artifactId>
         </dependency>
     </dependencies>
 

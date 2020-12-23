@@ -1,8 +1,11 @@
 package com.lw.bean;
 
-import com.baomidou.mybatisplus.annotation.*;
-
+import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.annotation.IdType;
+import java.time.LocalDate;
+import com.baomidou.mybatisplus.annotation.TableId;
 import java.time.LocalDateTime;
+import com.baomidou.mybatisplus.annotation.TableField;
 import java.io.Serializable;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -15,7 +18,7 @@ import lombok.EqualsAndHashCode;
  * </p>
  *
  * @author yujun.wu
- * @since 2020-12-19
+ * @since 2020-12-20
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
@@ -39,11 +42,11 @@ public class StudentInfoT implements Serializable {
 
     @ApiModelProperty(value = "入学日期")
     @TableField("T_ENROL_DTTM")
-    private LocalDateTime enrolDttm;
+    private LocalDate enrolDttm;
 
     @ApiModelProperty(value = "毕业时间")
     @TableField("T_GRADUATE_DTTM")
-    private LocalDateTime graduateDttm;
+    private LocalDate graduateDttm;
 
     @ApiModelProperty(value = "添加人")
     @TableField("T_ADD_OPERATOR")
@@ -63,7 +66,6 @@ public class StudentInfoT implements Serializable {
 
     @ApiModelProperty(value = "删除标志")
     @TableField("T_DELETED")
-    @TableLogic(delval = "1",value = "0")
     private Boolean deleted;
 
 

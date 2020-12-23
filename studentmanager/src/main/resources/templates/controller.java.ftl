@@ -8,6 +8,7 @@ import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import com.lw.exception.UnifyException;
 import org.springframework.web.bind.annotation.*;
 
 <#if restControllerStyle>
@@ -55,42 +56,42 @@ public class ${table.controllerName} {
         @ApiImplicitParam(name = "sort", value = "排序方式排序[true:正序; false:倒序]", dataType = "Boolean"),
         @ApiImplicitParam(name = "sortName", value = "排序字段,参照返回字段", dataType = "String")})
     @PostMapping(value = "/page")
-    public  Object list(@Valid @RequestBody ${entity} param) {
+    public  ResultInfo list(@Valid @RequestBody ${entity} param) throws UnifyException{
         Object data = ${table.serviceName?uncap_first}.page(param);
         return ResultInfo.success(data);
     }
 
     @ApiOperation(value = "${table.comment}详情", response = ${entity}.class)
     @GetMapping(value = "/info/{id}")
-    public  Object info(@PathVariable Long id) {
+    public  ResultInfo info(@PathVariable Long id) throws UnifyException{
         Object data = ${table.serviceName?uncap_first}.info(id);
         return ResultInfo.success(data);
     }
 
     @ApiOperation(value = "${table.comment}新增")
     @PostMapping(value = "/add")
-    public  Object add(@Valid @RequestBody ${entity} param) {
+    public  ResultInfo add(@Valid @RequestBody ${entity} param) throws UnifyException{
         ${table.serviceName?uncap_first}.add(param);
         return ResultInfo.success();
     }
 
     @ApiOperation(value = "${table.comment}修改")
     @PostMapping(value = "/modify")
-    public  Object modify(@Valid @RequestBody ${entity} param) {
+    public  ResultInfo modify(@Valid @RequestBody ${entity} param) throws UnifyException{
         ${table.serviceName?uncap_first}.modify(param);
         return ResultInfo.success();
     }
 
     @ApiOperation(value = "${table.comment}删除(单个条目)")
     @GetMapping(value = "/remove/{id}")
-    public  Object remove(@PathVariable Long id) {
+    public  ResultInfo remove(@PathVariable Long id) throws UnifyException{
         ${table.serviceName?uncap_first}.remove(id);
         return ResultInfo.success();
     }
 
     @ApiOperation(value = "${table.comment}删除(多个条目)")
     @PostMapping(value = "/removes")
-    public  Object removes(@Valid @RequestBody List<Long> ids) {
+    public  Object removes(@Valid @RequestBody List<Long> ids) throws UnifyException{
         ${table.serviceName?uncap_first}.removes(ids);
         return ResultInfo.success();
     }

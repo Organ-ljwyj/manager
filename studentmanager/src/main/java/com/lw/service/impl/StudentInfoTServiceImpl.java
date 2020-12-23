@@ -1,14 +1,17 @@
 package com.lw.service.impl;
 
 import com.lw.bean.StudentInfoT;
+import com.lw.bean.vo.student.StudentInfoBaseVO;
+import com.lw.exception.UnifyException;
 import com.lw.mapper.StudentInfoTMapper;
 import com.lw.service.IStudentInfoTService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.lw.utils.BuildBeanUtils;
 import com.lw.utils.PageUtils;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
@@ -20,10 +23,10 @@ import java.util.List;
  * </p>
  *
  * @author yujun.wu
- * @since 2020-12-19
+ * @since 2020-12-20
  */
 @Service
-@Primary
+@Slf4j
 public class StudentInfoTServiceImpl extends ServiceImpl<StudentInfoTMapper, StudentInfoT> implements IStudentInfoTService {
 
     @Autowired
@@ -36,7 +39,7 @@ public class StudentInfoTServiceImpl extends ServiceImpl<StudentInfoTMapper, Stu
      * @return
      */
     @Override
-    public IPage<StudentInfoT> page(StudentInfoT param) {
+    public IPage<StudentInfoT> page(StudentInfoT param) throws UnifyException {
         QueryWrapper<StudentInfoT> queryWrapper = new QueryWrapper<>();
         queryWrapper.lambda()
                 //自增主键ID
@@ -71,30 +74,46 @@ public class StudentInfoTServiceImpl extends ServiceImpl<StudentInfoTMapper, Stu
      * @return
      */
     @Override
-    public StudentInfoT info(Long id) {
+    public StudentInfoT info(Long id) throws UnifyException {
         return getById(id);
     }
 
     /**
      * 学生个人信息新增
      *
-     * @param param 根据需要进行传值
+     * @param vo 根据需要进行传值
      * @return
      */
     @Override
-    public void add(StudentInfoT param) {
-        save(param);
+    public void add(StudentInfoBaseVO vo) throws UnifyException {
+        try {
+            StudentInfoT studentInfoT = BuildBeanUtils.copyProperties(vo, StudentInfoT.class);
+            save(studentInfoT);
+        } catch (Exception e) {
+            StringBuilder failMessage = new StringBuilder(100).append("新增学生个人信息失败，失败原因：")
+                    .append(e.getMessage());
+            throw new UnifyException(failMessage.toString());
+        }
+
     }
 
     /**
      * 学生个人信息修改
      *
-     * @param param 根据需要进行传值
+     * @param vo 根据需要进行传值
      * @return
      */
     @Override
-    public void modify(StudentInfoT param) {
-        updateById(param);
+    public void modify(StudentInfoBaseVO vo) throws UnifyException {
+        try {
+            StudentInfoT studentInfoT = BuildBeanUtils.copyProperties(vo, StudentInfoT.class);
+            updateById(studentInfoT);
+        } catch (ReflectiveOperationException e) {
+            StringBuilder failMessage = new StringBuilder(100).append("修改学生个人信息失败，失败原因：")
+                    .append(e.getMessage());
+            throw new UnifyException(failMessage.toString());
+        }
+
     }
 
     /**
@@ -104,7 +123,7 @@ public class StudentInfoTServiceImpl extends ServiceImpl<StudentInfoTMapper, Stu
      * @return
      */
     @Override
-    public void remove(Long id) {
+    public void remove(Long id) throws UnifyException {
         removeById(id);
     }
 
@@ -115,7 +134,7 @@ public class StudentInfoTServiceImpl extends ServiceImpl<StudentInfoTMapper, Stu
      * @return
      */
     @Override
-    public void removes(List<Long> ids) {
+    public void removes(List<Long> ids) throws UnifyException {
         removeByIds(ids);
     }
 }

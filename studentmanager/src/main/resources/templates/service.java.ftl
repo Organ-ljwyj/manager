@@ -3,6 +3,7 @@ package ${package.Service};
 import ${package.Entity}.${entity};
 import ${superServiceClassPackage};
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.lw.exception.UnifyException;
 
 import java.util.List;
 
@@ -24,7 +25,7 @@ public interface ${table.serviceName} extends ${superServiceClass}<${entity}> {
      * @param param 根据需要进行传值
      * @return
      */
-    IPage<${entity}> page(${entity} param);
+    IPage<${entity}> page(${entity} param) throws UnifyException;
 
 
     /**
@@ -33,7 +34,7 @@ public interface ${table.serviceName} extends ${superServiceClass}<${entity}> {
      * @param id
      * @return
      */
-     ${entity} info(Long id);
+     ${entity} info(Long id) throws UnifyException;
 
     /**
      * ${table.comment!}新增
@@ -41,7 +42,7 @@ public interface ${table.serviceName} extends ${superServiceClass}<${entity}> {
      * @param param 根据需要进行传值
      * @return
      */
-     void add(${entity} param);
+     void add(${entity} param) throws UnifyException;
 
     /**
      * ${table.comment!}修改
@@ -49,7 +50,7 @@ public interface ${table.serviceName} extends ${superServiceClass}<${entity}> {
      * @param param 根据需要进行传值
      * @return
      */
-     void modify(${entity} param);
+     void modify(${entity} param) throws UnifyException;
 
     /**
      * ${table.comment!}删除(单个条目)
@@ -57,7 +58,7 @@ public interface ${table.serviceName} extends ${superServiceClass}<${entity}> {
      * @param id
      * @return
      */
-     void remove(Long id);
+     void remove(Long id) throws UnifyException;
 
     /**
      * 删除(多个条目)
@@ -65,6 +66,6 @@ public interface ${table.serviceName} extends ${superServiceClass}<${entity}> {
      * @param ids
      * @return
      */
-     void removes(List<Long> ids);
+     void removes(List<Long> ids) throws UnifyException;
 }
 </#if>

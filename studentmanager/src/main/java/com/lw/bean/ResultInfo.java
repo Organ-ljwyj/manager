@@ -57,6 +57,10 @@ public class ResultInfo {
         return DEFAULT_FAIL;
     }
 
+    public static ResultInfo fail(String message) {
+        return new ResultInfo(ResponseEnum.Fail.getCode(), message, null);
+    }
+
     public static ResultInfo fail(Integer status, String message) {
         return new ResultInfo(status, message, null);
     }

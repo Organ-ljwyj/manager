@@ -7,9 +7,11 @@ import ${superServiceImplClassPackage};
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.lw.utils.PageUtils;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
+import com.lw.exception.UnifyException;
 
 import java.util.List;
 
@@ -22,6 +24,7 @@ import java.util.List;
  * @since ${date}
  */
 @Service
+@Slf4j
 <#if kotlin>
  open class ${table.serviceImplName} : ${superServiceImplClass}<${table.mapperName}, ${entity}>(), ${table.serviceName} {
  }
@@ -38,7 +41,7 @@ public class ${table.serviceImplName} extends ${superServiceImplClass}<${table.m
      * @return
      */
     @Override
-    public IPage<${entity}> page(${entity} param) {
+    public IPage<${entity}> page(${entity} param) throws UnifyException{
         QueryWrapper<${entity}> queryWrapper = new QueryWrapper<>();
         queryWrapper.lambda()
         <#list table.fields as field>
@@ -73,7 +76,7 @@ public class ${table.serviceImplName} extends ${superServiceImplClass}<${table.m
      * @return
      */
     @Override
-    public ${entity} info(Long id) {
+    public ${entity} info(Long id) throws UnifyException{
         return getById(id);
     }
 
@@ -84,7 +87,7 @@ public class ${table.serviceImplName} extends ${superServiceImplClass}<${table.m
      * @return
      */
     @Override
-    public void add(${entity} param) {
+    public void add(${entity} param) throws UnifyException{
         save(param);
     }
 
@@ -95,7 +98,7 @@ public class ${table.serviceImplName} extends ${superServiceImplClass}<${table.m
      * @return
      */
     @Override
-    public void modify(${entity} param) {
+    public void modify(${entity} param) throws UnifyException{
         updateById(param);
     }
 
@@ -106,7 +109,7 @@ public class ${table.serviceImplName} extends ${superServiceImplClass}<${table.m
      * @return
      */
     @Override
-    public void remove(Long id) {
+    public void remove(Long id) throws UnifyException{
         removeById(id);
     }
 
@@ -117,7 +120,7 @@ public class ${table.serviceImplName} extends ${superServiceImplClass}<${table.m
      * @return
      */
     @Override
-    public void removes(List<Long> ids) {
+    public void removes(List<Long> ids) throws UnifyException{
         removeByIds(ids);
     }
 }

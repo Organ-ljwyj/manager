@@ -1,8 +1,11 @@
 package com.lw.bean;
 
-import com.baomidou.mybatisplus.annotation.*;
-
+import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.annotation.IdType;
+import java.time.LocalDate;
+import com.baomidou.mybatisplus.annotation.TableId;
 import java.time.LocalDateTime;
+import com.baomidou.mybatisplus.annotation.TableField;
 import java.io.Serializable;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -15,13 +18,13 @@ import lombok.EqualsAndHashCode;
  * </p>
  *
  * @author yujun.wu
- * @since 2020-12-19
+ * @since 2020-12-20
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
-@TableName("lw_user_info_def")
-@ApiModel(value="UserInfoDef对象", description="用户信息定义表")
-public class UserInfoDef implements Serializable {
+@TableName("lw_user_info_def_t")
+@ApiModel(value="UserInfoDefT对象", description="用户信息定义表")
+public class UserInfoDefT implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -29,13 +32,13 @@ public class UserInfoDef implements Serializable {
     @TableId(value = "T_ID", type = IdType.AUTO)
     private Integer id;
 
-    @ApiModelProperty(value = "学生姓名")
+    @ApiModelProperty(value = "姓名")
     @TableField("T_NAME")
     private String name;
 
-    @ApiModelProperty(value = "学生性别")
+    @ApiModelProperty(value = "性别")
     @TableField("T_SEX")
-    private Boolean sex;
+    private Integer sex;
 
     @ApiModelProperty(value = "身份证号")
     @TableField("T_ID_CARD")
@@ -55,7 +58,7 @@ public class UserInfoDef implements Serializable {
 
     @ApiModelProperty(value = "出生日期")
     @TableField("T_BIRTHDAY")
-    private LocalDateTime birthday;
+    private LocalDate birthday;
 
     @ApiModelProperty(value = "添加人")
     @TableField("T_ADD_OPERATOR")
@@ -75,8 +78,7 @@ public class UserInfoDef implements Serializable {
 
     @ApiModelProperty(value = "删除标志")
     @TableField("T_DELETED")
-    @TableLogic(delval = "1",value = "0")
-    private Boolean deleted;
+    private Integer deleted;
 
 
 }

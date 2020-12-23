@@ -1,6 +1,6 @@
 package com.lw.mapper;
 
-import com.lw.bean.UserInfoDef;
+import com.lw.bean.UserInfoDefT;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**
@@ -9,8 +9,8 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * </p>
  *
  * @author yujun.wu
- * @since 2020-12-19
+ * @since 2020-12-20
  */
-public interface UserInfoDefMapper extends BaseMapper<UserInfoDef> {
+public interface UserInfoDefTMapper extends BaseMapper<UserInfoDefT> {
 
 }

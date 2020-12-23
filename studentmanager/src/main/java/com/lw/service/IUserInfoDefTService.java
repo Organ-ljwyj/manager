@@ -1,8 +1,10 @@
 package com.lw.service;
 
-import com.lw.bean.UserInfoDef;
+import com.lw.bean.UserInfoDefT;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.lw.bean.vo.user.UserInfoDefBaseVO;
+import com.lw.exception.UnifyException;
 
 import java.util.List;
 
@@ -12,16 +14,16 @@ import java.util.List;
  * </p>
  *
  * @author yujun.wu
- * @since 2020-12-19
+ * @since 2020-12-20
  */
-public interface IUserInfoDefService extends IService<UserInfoDef> {
+public interface IUserInfoDefTService extends IService<UserInfoDefT> {
     /**
      * 用户信息定义表分页列表
      *
      * @param param 根据需要进行传值
      * @return
      */
-    IPage<UserInfoDef> page(UserInfoDef param);
+    IPage<UserInfoDefT> page(UserInfoDefT param) throws UnifyException;
 
 
     /**
@@ -30,15 +32,15 @@ public interface IUserInfoDefService extends IService<UserInfoDef> {
      * @param id
      * @return
      */
-    UserInfoDef info(Long id);
+     UserInfoDefT info(Long id) throws UnifyException;
 
     /**
      * 用户信息定义表新增
      *
-     * @param param 根据需要进行传值
+     * @param vo 根据需要进行传值
      * @return
      */
-    void add(UserInfoDef param);
+     void add(UserInfoDefBaseVO vo) throws UnifyException;
 
     /**
      * 用户信息定义表修改
@@ -46,7 +48,7 @@ public interface IUserInfoDefService extends IService<UserInfoDef> {
      * @param param 根据需要进行传值
      * @return
      */
-    void modify(UserInfoDef param);
+     void modify(UserInfoDefT param) throws UnifyException;
 
     /**
      * 用户信息定义表删除(单个条目)
@@ -54,7 +56,7 @@ public interface IUserInfoDefService extends IService<UserInfoDef> {
      * @param id
      * @return
      */
-    void remove(Long id);
+     void remove(Long id) throws UnifyException;
 
     /**
      * 删除(多个条目)
@@ -62,5 +64,5 @@ public interface IUserInfoDefService extends IService<UserInfoDef> {
      * @param ids
      * @return
      */
-    void removes(List<Long> ids);
+     void removes(List<Long> ids) throws UnifyException;
 }

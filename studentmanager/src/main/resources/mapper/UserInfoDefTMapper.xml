@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.lw.mapper.UserInfoDefMapper">
+<mapper namespace="com.lw.mapper.UserInfoDefTMapper">
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="com.lw.bean.UserInfoDef">
+    <resultMap id="BaseResultMap" type="com.lw.bean.UserInfoDefT">
         <id column="T_ID" property="id" />
         <result column="T_NAME" property="name" />
         <result column="T_SEX" property="sex" />

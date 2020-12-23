@@ -1,8 +1,10 @@
 package com.lw.service;
 
 import com.lw.bean.StudentInfoT;
+import com.lw.bean.vo.student.StudentInfoBaseVO;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.lw.exception.UnifyException;
 
 import java.util.List;
 
@@ -12,7 +14,7 @@ import java.util.List;
  * </p>
  *
  * @author yujun.wu
- * @since 2020-12-19
+ * @since 2020-12-20
  */
 public interface IStudentInfoTService extends IService<StudentInfoT> {
     /**
@@ -21,7 +23,7 @@ public interface IStudentInfoTService extends IService<StudentInfoT> {
      * @param param 根据需要进行传值
      * @return
      */
-    IPage<StudentInfoT> page(StudentInfoT param);
+    IPage<StudentInfoT> page(StudentInfoT param) throws UnifyException;
 
 
     /**
@@ -30,23 +32,23 @@ public interface IStudentInfoTService extends IService<StudentInfoT> {
      * @param id
      * @return
      */
-    StudentInfoT info(Long id);
+    StudentInfoT info(Long id) throws UnifyException;
 
     /**
      * 学生个人信息新增
      *
-     * @param param 根据需要进行传值
+     * @param vo 根据需要进行传值
      * @return
      */
-    void add(StudentInfoT param);
+    void add(StudentInfoBaseVO vo) throws UnifyException;
 
     /**
      * 学生个人信息修改
      *
-     * @param param 根据需要进行传值
+     * @param vo 根据需要进行传值
      * @return
      */
-    void modify(StudentInfoT param);
+    void modify(StudentInfoBaseVO vo) throws UnifyException;
 
     /**
      * 学生个人信息删除(单个条目)
@@ -54,7 +56,7 @@ public interface IStudentInfoTService extends IService<StudentInfoT> {
      * @param id
      * @return
      */
-    void remove(Long id);
+    void remove(Long id) throws UnifyException;
 
     /**
      * 删除(多个条目)
@@ -62,5 +64,5 @@ public interface IStudentInfoTService extends IService<StudentInfoT> {
      * @param ids
      * @return
      */
-    void removes(List<Long> ids);
+    void removes(List<Long> ids) throws UnifyException;
 }
