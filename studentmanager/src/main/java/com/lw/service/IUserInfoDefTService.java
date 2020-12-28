@@ -1,9 +1,10 @@
 package com.lw.service;
 
-import com.lw.bean.UserInfoDefT;
-import com.baomidou.mybatisplus.extension.service.IService;
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.service.IService;
+import com.lw.bean.UserInfoDefT;
 import com.lw.bean.vo.user.UserInfoDefBaseVO;
+import com.lw.bean.vo.user.UserInfoPageVO;
 import com.lw.exception.UnifyException;
 
 import java.util.List;
@@ -20,10 +21,10 @@ public interface IUserInfoDefTService extends IService<UserInfoDefT> {
     /**
      * 用户信息定义表分页列表
      *
-     * @param param 根据需要进行传值
+     * @param vo 根据需要进行传值
      * @return
      */
-    IPage<UserInfoDefT> page(UserInfoDefT param) throws UnifyException;
+    IPage<UserInfoDefT> page(UserInfoPageVO vo) throws UnifyException;
 
 
     /**

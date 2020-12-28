@@ -49,7 +49,7 @@ public class ${table.controllerName} {
     @Autowired
     private ${table.serviceName} ${table.serviceName?uncap_first};
 
-    @ApiOperation(value = "${table.comment}分页列表", response = ${entity}.class)
+    @ApiOperation(value = "${table.comment}分页列表", response = ResultInfo.class)
     @ApiImplicitParams({
         @ApiImplicitParam(name = "page", value = "页面", dataType = "Long"),
         @ApiImplicitParam(name = "size", value = "页面数据量", dataType = "Long"),
@@ -61,7 +61,7 @@ public class ${table.controllerName} {
         return ResultInfo.success(data);
     }
 
-    @ApiOperation(value = "${table.comment}详情", response = ${entity}.class)
+    @ApiOperation(value = "${table.comment}详情", response = ResultInfo.class)
     @GetMapping(value = "/info/{id}")
     public  ResultInfo info(@PathVariable Long id) throws UnifyException{
         Object data = ${table.serviceName?uncap_first}.info(id);

@@ -3,11 +3,10 @@ package com.lw.controller;
 import com.lw.bean.ResultInfo;
 import com.lw.bean.UserInfoDefT;
 import com.lw.bean.vo.user.UserInfoDefBaseVO;
+import com.lw.bean.vo.user.UserInfoPageVO;
 import com.lw.exception.UnifyException;
 import com.lw.service.IUserInfoDefTService;
 import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiImplicitParam;
-import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -35,19 +34,14 @@ public class UserInfoDefTController {
     @Autowired
     private IUserInfoDefTService iUserInfoDefTService;
 
-    @ApiOperation(value = "用户信息定义表分页列表", response = UserInfoDefT.class)
-    @ApiImplicitParams({
-        @ApiImplicitParam(name = "page", value = "页面", dataType = "Long"),
-        @ApiImplicitParam(name = "size", value = "页面数据量", dataType = "Long"),
-        @ApiImplicitParam(name = "sort", value = "排序方式排序[true:正序; false:倒序]", dataType = "Boolean"),
-        @ApiImplicitParam(name = "sortName", value = "排序字段,参照返回字段", dataType = "String")})
+    @ApiOperation(value = "用户信息定义表分页列表", response = ResultInfo.class)
     @PostMapping(value = "/page")
-    public  ResultInfo list(@Valid @RequestBody UserInfoDefT param) throws UnifyException{
-        Object data = iUserInfoDefTService.page(param);
+    public  ResultInfo list(@Valid @RequestBody UserInfoPageVO vo) throws UnifyException{
+        Object data = iUserInfoDefTService.page(vo);
         return ResultInfo.success(data);
     }
 
-    @ApiOperation(value = "用户信息定义表详情", response = UserInfoDefT.class)
+    @ApiOperation(value = "用户信息定义表详情", response = ResultInfo.class)
     @GetMapping(value = "/info/{id}")
     public  ResultInfo info(@PathVariable Long id) throws UnifyException{
         Object data = iUserInfoDefTService.info(id);

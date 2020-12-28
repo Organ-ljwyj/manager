@@ -1,14 +1,14 @@
 package com.lw.bean;
 
-import com.baomidou.mybatisplus.annotation.TableLogic;
-import com.baomidou.mybatisplus.annotation.TableName;
-import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableField;
-import java.io.Serializable;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+
+import java.io.Serializable;
 
 /**
  * <p>
@@ -36,8 +36,5 @@ public class UserToRoleT implements Serializable {
 
     @ApiModelProperty(value = "角色ID")
     @TableField("T_ROLE_ID")
-    @TableLogic(delval = "1",value = "0")
     private Integer roleId;
-
-
 }

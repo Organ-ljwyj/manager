@@ -1,15 +1,13 @@
 package com.lw.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.lw.bean.UserToRoleT;
 import com.lw.mapper.UserToRoleTMapper;
 import com.lw.service.IUserToRoleTService;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.lw.utils.PageUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils;
 
 import java.util.List;
 
@@ -24,8 +22,6 @@ import java.util.List;
 @Service
 public class UserToRoleTServiceImpl extends ServiceImpl<UserToRoleTMapper, UserToRoleT> implements IUserToRoleTService {
 
-    @Autowired
-    private PageUtils pageUtils;
 
     /**
      * 用户角色关系表分页列表
@@ -44,7 +40,7 @@ public class UserToRoleTServiceImpl extends ServiceImpl<UserToRoleTMapper, UserT
                 //角色ID
                 .eq(param.getRoleId() != null, UserToRoleT::getRoleId, param.getRoleId())
         ;
-        IPage<UserToRoleT> page = page(pageUtils.page(), queryWrapper);
+        IPage<UserToRoleT> page = page(PageUtils.page(1L,10L), queryWrapper);
         return page;
     }
 

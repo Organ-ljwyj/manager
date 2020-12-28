@@ -1,15 +1,17 @@
 package com.lw.controller;
 
+import com.lw.bean.ResultInfo;
 import com.lw.bean.UserToRoleT;
 import com.lw.service.IUserToRoleTService;
-import com.lw.bean.ResultInfo;
 import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiImplicitParam;
-import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
-
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -29,19 +31,14 @@ public class UserToRoleTController {
     @Autowired
     private IUserToRoleTService iUserToRoleTService;
 
-    @ApiOperation(value = "用户角色关系表分页列表", response = UserToRoleT.class)
-    @ApiImplicitParams({
-            @ApiImplicitParam(name = "page", value = "页面", dataType = "Long"),
-            @ApiImplicitParam(name = "size", value = "页面数据量", dataType = "Long"),
-            @ApiImplicitParam(name = "sort", value = "排序方式排序[true:正序; false:倒序]", dataType = "Boolean"),
-            @ApiImplicitParam(name = "sortName", value = "排序字段,参照返回字段", dataType = "String")})
+    @ApiOperation(value = "用户角色关系表分页列表", response = ResultInfo.class)
     @PostMapping(value = "/page")
     public Object list(@Valid @RequestBody UserToRoleT param) {
         Object data = iUserToRoleTService.page(param);
         return ResultInfo.success(data);
     }
 
-    @ApiOperation(value = "用户角色关系表详情", response = UserToRoleT.class)
+    @ApiOperation(value = "用户角色关系表详情", response = ResultInfo.class)
     @GetMapping(value = "/info/{id}")
     public Object info(@PathVariable Long id) {
         Object data = iUserToRoleTService.info(id);

@@ -1,13 +1,12 @@
 package com.lw.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.lw.bean.UserRoleDefT;
 import com.lw.mapper.UserRoleDefTMapper;
 import com.lw.service.IUserRoleDefTService;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.lw.utils.PageUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
@@ -23,9 +22,6 @@ import java.util.List;
  */
 @Service
 public class UserRoleDefTServiceImpl extends ServiceImpl<UserRoleDefTMapper, UserRoleDefT> implements IUserRoleDefTService {
-
-    @Autowired
-    private PageUtils pageUtils;
 
     /**
      * 用户角色定义表分页列表
@@ -54,7 +50,7 @@ public class UserRoleDefTServiceImpl extends ServiceImpl<UserRoleDefTMapper, Use
                 //删除标志
                 .eq(param.getDeleted() != null, UserRoleDefT::getDeleted, param.getDeleted())
         ;
-        IPage<UserRoleDefT> page = page(pageUtils.page(), queryWrapper);
+        IPage<UserRoleDefT> page = page(PageUtils.page(1,10), queryWrapper);
         return page;
     }
 

@@ -1,16 +1,18 @@
 package com.lw.bean;
 
-import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.IdType;
-import java.time.LocalDate;
-import com.baomidou.mybatisplus.annotation.TableId;
-import java.time.LocalDateTime;
 import com.baomidou.mybatisplus.annotation.TableField;
-import java.io.Serializable;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableLogic;
+import com.baomidou.mybatisplus.annotation.TableName;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+
+import java.io.Serializable;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 /**
  * <p>
@@ -78,6 +80,7 @@ public class UserInfoDefT implements Serializable {
 
     @ApiModelProperty(value = "删除标志")
     @TableField("T_DELETED")
+    @TableLogic
     private Integer deleted;
 
 

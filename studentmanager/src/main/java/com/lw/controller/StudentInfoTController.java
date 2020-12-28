@@ -1,18 +1,19 @@
 package com.lw.controller;
 
-import com.lw.bean.StudentInfoT;
+import com.lw.bean.ResultInfo;
 import com.lw.bean.vo.student.StudentInfoBaseVO;
+import com.lw.bean.vo.student.StudentInfoPageVO;
 import com.lw.exception.UnifyException;
 import com.lw.service.IStudentInfoTService;
-import com.lw.bean.ResultInfo;
 import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiImplicitParam;
-import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
-
-
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -32,19 +33,14 @@ public class StudentInfoTController {
     @Autowired
     private IStudentInfoTService iStudentInfoTService;
 
-    @ApiOperation(value = "学生个人信息分页列表", response = StudentInfoT.class)
-    @ApiImplicitParams({
-        @ApiImplicitParam(name = "page", value = "页面", dataType = "Long"),
-        @ApiImplicitParam(name = "size", value = "页面数据量", dataType = "Long"),
-        @ApiImplicitParam(name = "sort", value = "排序方式排序[true:正序; false:倒序]", dataType = "Boolean"),
-        @ApiImplicitParam(name = "sortName", value = "排序字段,参照返回字段", dataType = "String")})
+    @ApiOperation(value = "学生个人信息分页列表", response = ResultInfo.class)
     @PostMapping(value = "/page")
-    public  Object list(@Valid @RequestBody StudentInfoT param) throws UnifyException {
-        Object data = iStudentInfoTService.page(param);
+    public  Object list(@Valid @RequestBody StudentInfoPageVO vo) throws UnifyException {
+        Object data = iStudentInfoTService.page(vo);
         return ResultInfo.success(data);
     }
 
-    @ApiOperation(value = "学生个人信息详情", response = StudentInfoT.class)
+    @ApiOperation(value = "学生个人信息详情", response = ResultInfo.class)
     @GetMapping(value = "/info/{id}")
     public  Object info(@PathVariable Long id) throws UnifyException {
         Object data = iStudentInfoTService.info(id);

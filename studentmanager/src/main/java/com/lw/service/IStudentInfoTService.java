@@ -1,9 +1,10 @@
 package com.lw.service;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.service.IService;
 import com.lw.bean.StudentInfoT;
 import com.lw.bean.vo.student.StudentInfoBaseVO;
-import com.baomidou.mybatisplus.extension.service.IService;
-import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.lw.bean.vo.student.StudentInfoPageVO;
 import com.lw.exception.UnifyException;
 
 import java.util.List;
@@ -20,10 +21,10 @@ public interface IStudentInfoTService extends IService<StudentInfoT> {
     /**
      * 学生个人信息分页列表
      *
-     * @param param 根据需要进行传值
+     * @param vo 根据需要进行传值
      * @return
      */
-    IPage<StudentInfoT> page(StudentInfoT param) throws UnifyException;
+    IPage<StudentInfoT> page(StudentInfoPageVO vo) throws UnifyException;
 
 
     /**
