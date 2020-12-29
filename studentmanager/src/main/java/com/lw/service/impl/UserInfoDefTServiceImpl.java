@@ -1,7 +1,7 @@
 package com.lw.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.baomidou.mybatisplus.extension.conditions.query.LambdaQueryChainWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.lw.bean.UserInfoDefT;
 import com.lw.bean.vo.user.UserInfoDefBaseVO;
@@ -37,10 +37,11 @@ public class UserInfoDefTServiceImpl extends ServiceImpl<UserInfoDefTMapper, Use
      */
     @Override
     public IPage<UserInfoDefT> page(UserInfoPageVO vo) throws UnifyException {
-        LambdaQueryChainWrapper<UserInfoDefT> queryChainWrapper = lambdaQuery()
+        QueryWrapper<UserInfoDefT> queryWrapper = new QueryWrapper<>();
+        queryWrapper.lambda()
                 .like(!StringUtils.isBlank(vo.getName()), UserInfoDefT::getName, vo.getName())
                 .like(!StringUtils.isEmpty(vo.getIdCard()), UserInfoDefT::getIdCard, vo.getIdCard());
-        IPage<UserInfoDefT> page = page(PageUtils.page(vo.getPageNum(), vo.getPageSize()), queryChainWrapper);
+        IPage<UserInfoDefT> page = page(PageUtils.page(vo.getPageNum(), vo.getPageSize()), queryWrapper);
         return page;
     }
 
